@@ -1,0 +1,42 @@
+/* ==========================================================================
+Main page styles
+========================================================================== */
+/* .home { */
+/*   margin-left: calc(50% - 50vw); */
+/* /*   width: auto; */ */
+/*   -webkit-box-sizing: border-box; */
+/*   -moz-box-sizing: border-box; */
+/*   box-sizing: border-box; */
+
+/* } */
+
+
+/* ::ng-deep ngb-carousel { */
+/*   width: 100vw; */
+/* } */
+
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+/* .hipster { */
+/*     display: inline-block; */
+/*     width: 1900px; */
+/*     height: 1080px; */
+/*     background: url('../../content/images/acounting.jpg') no-repeat center top; */
+/*     background-size: contain; */
+/* } */
+
+/* wait autoprefixer update to allow simple generation of high pixel density media query */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+/*     .hipster { */
+/*         background: url('../../content/images/acounting.jpg') no-repeat center top; */
+/*         background-size: contain; */
+/*     } */
+}
