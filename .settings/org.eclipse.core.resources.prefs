@@ -1,0 +1,15 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/main/webapp/app/entities/scheduler/scheduler-delete-dialog.component.html=UTF-8
+encoding//src/main/webapp/app/entities/scheduler/scheduler-detail.component.html=UTF-8
+encoding//src/main/webapp/app/entities/scheduler/scheduler-reservation.component.html=UTF-8
+encoding//src/main/webapp/app/entities/scheduler/scheduler-student-view.component.html=UTF-8
+encoding//src/main/webapp/app/entities/scheduler/scheduler-update.component.html=UTF-8
+encoding//src/main/webapp/app/entities/scheduler/scheduler.component.html=UTF-8
+encoding//src/main/webapp/app/entities/subject/subject-delete-dialog.component.html=UTF-8
+encoding//src/main/webapp/app/home/home.component.html=UTF-8
+encoding//src/main/webapp/app/layouts/navbar/navbar.component.html=UTF-8
+encoding//src/test/java=UTF-8
+encoding//src/test/resources=UTF-8
+encoding/<project>=UTF-8

@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8"></br></br>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-student-heading">Rezervacija termina</h2>
+            <div></br>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_title">Ime:</label>
+                    <input type="text" class="form-control" name="sname" id="sname"
+                        [(ngModel)]="student.studentName" #sname="ngModel" required minlength="2" maxlength="20"/>
+                    	<div *ngIf="sname.dirty && sname.invalid">
+                        	<small class="form-text text-danger" *ngIf="sname.errors.required">
+                            	Unesi ime.
+                        	</small>
+                        	<small class="form-text text-danger" *ngIf="sname.errors.minlength">
+                            	Ime treba imati najmanje 2 znaka.
+                        	</small>
+                        	<small class="form-text text-danger" *ngIf="sname.errors.maxlength">
+                            	Ime treba imati najviše 20 znakova.
+                        	</small>
+                    	</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_title">Prezime:</label>
+                    <input type="text" class="form-control" name="surname" id="surname"
+                        [(ngModel)]="student.studentLastName" #surname="ngModel" required minlength="2" maxlength="20"/>
+						<div *ngIf="surname.dirty && surname.invalid">
+                        	<small class="form-text text-danger" *ngIf="surname.errors.required">
+                            	Unesi prezime.
+                        	</small>
+                        	<small class="form-text text-danger" *ngIf="surname.errors.minlength">
+                            	Prezime treba imati najmanje 2 znaka.
+                        	</small>
+                        	<small class="form-text text-danger" *ngIf="surname.errors.maxlength">
+                            	Prezime treba imati najviše 20 znakova.
+                        	</small>
+                    	</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_title">Broj mobitela:</label>
+                    <input type="text" class="form-control" name="phone" id="phone"
+                        [(ngModel)]="student.phoneNumber" #phone="ngModel" required minlength="9" maxlength="10" pattern="09[0-9]+"/>
+						<div *ngIf="phone.dirty && phone.invalid">
+                        	<small class="form-text text-danger" *ngIf="phone.errors.required">
+                            	Unesi broj mobitela.
+                        	</small>
+                        	<small class="form-text text-danger" *ngIf="phone.errors.minlength">
+                            	Broj mobitela treba imati najmanje 9 znamenki.
+                        	</small>
+                        	<small class="form-text text-danger" *ngIf="phone.errors.maxlength">
+                            	Broj mobitela treba imati najviše 10 znamenki.
+                        	</small>
+							<small class="form-text text-danger" *ngIf="phone.errors.pattern">
+                            	Broj mobitela treba sadržavati samo znamenke i počinjati sa 09.
+                        	</small>
+                    	</div>
+                </div>
+            </div></br>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Odustani</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Spremi</span>
+                </button>
+            </div>
+        </form></br></br></br>
+    </div>
+</div>

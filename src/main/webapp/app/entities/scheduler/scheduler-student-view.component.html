@@ -1,0 +1,47 @@
+<div class="container"><br/>
+	<div>
+    	<h2 id="page-heading">
+        	<span>{{subjectName}}</span>
+			<br/><br/>
+    	</h2>
+	</div> 
+<!--    <jhi-alert></jhi-alert> -->
+    <br/><br/><br/>
+	<div *ngIf="schedulers.length === 0">
+        <h5 id="message">
+        	<span>Trenutno nema slobodnih termina za odabrani kolegij.</span>
+			<br/><br/>
+    	</h5>
+    </div>
+    <div class="table-responsive" *ngIf="schedulers.length">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>Počinje u</span></th>
+            <th><span>Završava u</span></th>
+            <th><span>Broj studenata</span></th>
+			<th><span>Broj prijavljenih</span></th>
+            </tr>
+           </thead>
+         	<tbody>
+            <tr *ngFor="let scheduler of schedulers ;trackBy: trackId">
+                <td>{{scheduler.startTime | customDate}}</td>
+                <td>{{scheduler.endTime | customDate}}</td>
+                <td>{{scheduler.numberOfStudents}}</td>
+				<td>{{scheduler.numberOfSubmitted}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+        				<button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-scheduler" 
+							[routerLink]="['/student']" [queryParams]="{scheduler: scheduler.id}">
+            				<fa-icon [icon]="'plus'"></fa-icon>
+            				<span >
+            					Rezerviraj
+            				</span>
+        				</button>
+                    </div>
+                </td>
+            </tr>
+		</tbody>
+        </table>
+    </div><br/><br/><br/><br/>
+</div>

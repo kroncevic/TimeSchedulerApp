@@ -1,0 +1,64 @@
+<div class="container"><br/>
+	<div>
+    	<h2 id="page-heading">
+        	<span>Popis kolegija</span>
+			<br/><br/>
+        	<button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-subject" [routerLink]="['/subject/new']">
+            	<fa-icon [icon]="'plus'"></fa-icon>
+            	<span >
+            	Dodaj novi kolegij
+            	</span>
+        	</button>
+    	</h2>
+	</div> 
+<!--    <jhi-alert></jhi-alert> -->
+    <br/><br/><br/>
+    <div class="table-responsive" *ngIf="subjects">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="subjectName"><span>Naslov kolegija</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="subjectDescription"><span>Opis kolegija</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            </tr>
+           </thead>
+         	<tbody>
+            <tr *ngFor="let subject of subjects ;trackBy: trackId">
+                <td>{{subject.subjectName}}<a [routerLink]="['/subject', subject.subjectName, 'view' ]"></a></td>
+                <td>{{subject.subjectDescription}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/subject', subject.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">Detalji</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/subject', subject.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Uredi</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'subject/'+ subject.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Obriši</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+		</tbody>
+        </table>
+    </div><br/><br/><br/>
+    <div *ngIf="subjects && subjects.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

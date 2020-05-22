@@ -1,0 +1,69 @@
+<div class="row justify-content-center"><br/>
+    <div class="col-8"><br/><br/><br/>
+        <div *ngIf="schedule">
+            <h2>{{schedule.subjectName}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Početak termina</span></dt>
+                <dd>
+                    <span>{{schedule.startTime | customDate}}</span>
+                </dd><br/>
+                <dt><span>Kraj termina</span></dt>
+                <dd>
+                    <span>{{schedule.endTime | customDate}}</span>
+                </dd><br/>
+                <dt><span>Ukupan broj mjesta</span></dt>
+                <dd>
+                    <span>{{schedule.numberOfStudents}}</span>
+                </dd><br/>
+                <dt><span>Broj prijavljenih</span></dt>
+                <dd>
+                    <span>{{schedule.numberOfSubmitted}}</span>
+                </dd>
+            </dl><br/>
+			<div class="table-responsive" *ngIf="students.length">
+        		<table class="table table-striped">
+            	<thead>
+            		<tr>
+            			<th><span>Ime</span></th>
+            			<th><span>Prezime</span></th>
+            			<th><span>Broj mobitela</span></th>
+            		</tr>
+           </thead>
+         	<tbody>
+            <tr *ngFor="let student of students ;trackBy: trackId">
+                <td>{{student.studentName}}</td>
+                <td>{{student.studentLastName}}</td>
+                <td>{{student.phoneNumber}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'student/'+ student.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Obriši</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+		</tbody>
+        </table>
+    </div><br/><br/><br/>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Nazad</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/schedule', schedule.id, 'edit']"
+                    class="btn btn-primary" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Uredi</span>
+            </button><br/><br/><br/>
+        </div>
+    </div>
+</div>

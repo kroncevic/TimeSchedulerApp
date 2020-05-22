@@ -1,17 +1,17 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { HttpResponse } from "@angular/common/http";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
-import { ActivatedRoute, Router } from '@angular/router';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { ActivatedRoute, Router } from "@angular/router";
+import { JhiEventManager, JhiParseLinks, JhiAlertService } from "ng-jhipster";
 
-import { ITEMS_PER_PAGE } from 'app/shared';
-import { Principal, UserService, User } from 'app/core';
-import { UserMgmtDeleteDialogComponent } from 'app/admin';
+import { ITEMS_PER_PAGE } from "app/shared";
+import { Principal, UserService, User } from "app/core";
+import { UserMgmtDeleteDialogComponent } from "app/admin";
 
 @Component({
-    selector: 'jhi-user-mgmt',
-    templateUrl: './user-management.component.html'
+    selector: "jhi-user-mgmt",
+    templateUrl: "./user-management.component.html"
 })
 export class UserMgmtComponent implements OnInit, OnDestroy {
     currentAccount: any;
@@ -40,10 +40,10 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
     ) {
         this.itemsPerPage = ITEMS_PER_PAGE;
         this.routeData = this.activatedRoute.data.subscribe(data => {
-            this.page = data['pagingParams'].page;
-            this.previousPage = data['pagingParams'].page;
-            this.reverse = data['pagingParams'].ascending;
-            this.predicate = data['pagingParams'].predicate;
+            this.page = data["pagingParams"].page;
+            this.previousPage = data["pagingParams"].page;
+            this.reverse = data["pagingParams"].ascending;
+            this.predicate = data["pagingParams"].predicate;
         });
     }
 
@@ -60,7 +60,9 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
     }
 
     registerChangeInUsers() {
-        this.eventManager.subscribe('userListModification', response => this.loadAll());
+        this.eventManager.subscribe("userListModification", response =>
+            this.loadAll()
+        );
     }
 
     setActive(user, isActivated) {
@@ -69,11 +71,11 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
         this.userService.update(user).subscribe(response => {
             if (response.status === 200) {
                 this.error = null;
-                this.success = 'OK';
+                this.success = "OK";
                 this.loadAll();
             } else {
                 this.success = null;
-                this.error = 'ERROR';
+                this.error = "ERROR";
             }
         });
     }
@@ -86,7 +88,8 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
                 sort: this.sort()
             })
             .subscribe(
-                (res: HttpResponse<User[]>) => this.onSuccess(res.body, res.headers),
+                (res: HttpResponse<User[]>) =>
+                    this.onSuccess(res.body, res.headers),
                 (res: HttpResponse<any>) => this.onError(res.body)
             );
     }
@@ -96,9 +99,9 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
     }
 
     sort() {
-        const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
-        if (this.predicate !== 'id') {
-            result.push('id');
+        const result = [this.predicate + "," + (this.reverse ? "asc" : "desc")];
+        if (this.predicate !== "id") {
+            result.push("id");
         }
         return result;
     }
@@ -111,17 +114,20 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
     }
 
     transition() {
-        this.router.navigate(['/admin/user-management'], {
+        this.router.navigate(["/admin/page-management"], {
             queryParams: {
                 page: this.page,
-                sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
+                sort: this.predicate + "," + (this.reverse ? "asc" : "desc")
             }
         });
         this.loadAll();
     }
 
     deleteUser(user: User) {
-        const modalRef = this.modalService.open(UserMgmtDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+        const modalRef = this.modalService.open(UserMgmtDeleteDialogComponent, {
+            size: "lg",
+            backdrop: "static"
+        });
         modalRef.componentInstance.user = user;
         modalRef.result.then(
             result => {
@@ -134,8 +140,8 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
     }
 
     private onSuccess(data, headers) {
-        this.links = this.parseLinks.parse(headers.get('link'));
-        this.totalItems = headers.get('X-Total-Count');
+        this.links = this.parseLinks.parse(headers.get("link"));
+        this.totalItems = headers.get("X-Total-Count");
         this.queryCount = this.totalItems;
         this.users = data;
     }

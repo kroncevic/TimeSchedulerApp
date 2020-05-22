@@ -3,7 +3,8 @@ Main page styles
 ========================================================================== */
 /* .home { */
 /*   margin-left: calc(50% - 50vw); */
-/* /*   width: auto; */ */
+/* /*   width: auto; */
+*/
 /*   -webkit-box-sizing: border-box; */
 /*   -moz-box-sizing: border-box; */
 /*   box-sizing: border-box; */
@@ -17,7 +18,15 @@ Main page styles
 
 
 .portfolio-item {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+.card-text {
+    font-size: 16px;
+    height: 150px;
+    text-overflow: ellipsis;
+    white-space: wrap;
+    overflow: hidden;
 }
 
 /* .hipster { */
@@ -35,8 +44,8 @@ Main page styles
     only screen and (min-device-pixel-ratio: 2),
     only screen and (min-resolution: 192dpi),
     only screen and (min-resolution: 2dppx) {
-/*     .hipster { */
-/*         background: url('../../content/images/acounting.jpg') no-repeat center top; */
-/*         background-size: contain; */
-/*     } */
+    /*     .hipster { */
+    /*         background: url('../../content/images/acounting.jpg') no-repeat center top; */
+    /*         background-size: contain; */
+    /*     } */
 }

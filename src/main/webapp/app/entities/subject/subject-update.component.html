@@ -1,0 +1,28 @@
+<div class="row justify-content-center">
+    <div class="col-8"></br></br>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-subject-heading">Dodaj ili uredi kolegij</h2>
+            <div></br>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_title">Naziv kolegija</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="subject.subjectName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_impression">Opis kolegija</label>
+					<textarea class="md-textarea form-control" name="description" rows="12" id="field_description" type="text" length="800" mdbCharCounter mdbInput
+						[(ngModel)]="subject.subjectDescription"></textarea>
+                </div>
+            </div></br>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Odustani</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Spremi</span>
+                </button>
+            </div>
+        </form></br></br></br>
+    </div>
+</div>

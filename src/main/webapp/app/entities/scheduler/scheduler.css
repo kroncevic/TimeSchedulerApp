@@ -1,0 +1,17 @@
+@import "../../../../../../node_modules/angular-calendar/css/angular-calendar.css";
+@import "../../../../../../node_modules/flatpickr/dist/flatpickr.css";
+
+h3 {
+    margin: 0 0 10px;
+}
+
+pre {
+    background-color: #ff8000;
+    padding: 15px;
+}
+
+.inline-flatpickr .form-control,
+.flatpickr-calendar.arrowTop:before,
+.flatpickr-calendar.arrowTop:after {
+    display: none;
+}

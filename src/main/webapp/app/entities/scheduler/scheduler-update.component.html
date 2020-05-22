@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8"></br></br>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-scheduler-heading">Dodaj ili uredi termin</h2>
+            <div></br>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="table-responsive">
+					 <thead>
+      					<tr>
+        					<th>Naziv kolegija</th>&nbsp;
+        					<th>Počinje u</th>&nbsp;
+        					<th>Završava u</th>&nbsp;
+        					<th>Broj studenata</th>
+      					</tr>
+    				</thead>
+					<tbody><tr>
+						<td>
+                			<select class="form-control" [(ngModel)]="schedule.subjectName" name="subjectName">
+								<option [ngValue]="undefined" hidden>Odaberi...</option>
+                				<option *ngFor="let subject of subjects" value="{{subject.subjectName}}">{{subject.subjectName}}</option>
+							</select>
+						</td>&nbsp;
+						<td>
+                    		<input 
+          						type="text" 
+								class="form-control" 
+								name="start" 
+								id="field_name" 
+								mwlFlatpickr
+                        		[(ngModel)]="schedule.startTime" 						
+                        		[altInput]="true"
+            					[convertModelValue]="false"
+            					[enableTime]="true"
+            					dateFormat="Y-m-dTH:i"
+            					altFormat="F j, Y H:i"
+            					placeholder="Not set" />
+						</td>&nbsp;
+                    	<td>
+                    		<input 
+								type="text" 
+								class="flatpickr" 
+								name="end" 
+								id="field_name" 
+								mwlFlatpickr
+                        		[(ngModel)]="schedule.endTime" 
+								[altInput]="true"
+            					[convertModelValue]="false"
+            					[enableTime]="true"
+            					dateFormat="Y-m-dTH:i"
+            					altFormat="F j, Y H:i"
+            					placeholder="Not set" />
+                		</td>&nbsp;
+                		<td>
+                    		<input type="text" class="form-control" name="start" id="field_name"
+                        	[(ngModel)]="schedule.numberOfStudents"  />
+                		</td></tr>
+            	</tbody></table></div></br></br></br></br>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Odustani</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Spremi</span>
+                </button>
+            </div>
+        </form></br></br></br>
+    </div>
+</div>
