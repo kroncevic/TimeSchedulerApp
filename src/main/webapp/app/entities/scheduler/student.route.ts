@@ -1,19 +1,20 @@
-import { Injectable } from "@angular/core";
-import { HttpResponse } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpResponse } from '@angular/common/http';
 import {
     Resolve,
     ActivatedRouteSnapshot,
     RouterStateSnapshot,
     Routes
-} from "@angular/router";
-import { UserRouteAccessService } from "app/core";
-import { Observable, of } from "rxjs";
-import { filter, map } from "rxjs/operators";
-import { StudentService } from "./student.service";
-import { SchedulerReservationComponent } from "./scheduler-reservation.component";
-import { IStudent, Student } from "app/shared/model/student.model";
+} from '@angular/router';
+import { UserRouteAccessService } from 'app/core';
+import { Observable, of } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+import { StudentService } from './student.service';
+import { SchedulerReservationComponent } from './scheduler-reservation.component';
+import { IStudent, Student } from 'app/shared/model/student.model';
+import { StudentDeletePopupComponent } from './student-delete-dialog.component';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class StudentResolve implements Resolve<IStudent> {
     constructor(private service: StudentService) {}
 
@@ -21,7 +22,7 @@ export class StudentResolve implements Resolve<IStudent> {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<Student> {
-        const id = route.params["id"] ? route.params["id"] : null;
+        const id = route.params['id'] ? route.params['id'] : null;
         if (id) {
             return this.service
                 .find(id)
@@ -36,15 +37,31 @@ export class StudentResolve implements Resolve<IStudent> {
 
 export const studentRoute: Routes = [
     {
-        path: "student",
+        path: 'student',
         component: SchedulerReservationComponent,
         resolve: {
             schedule: StudentResolve
         },
         data: {
             // authorities: ['ROLE_ANONYMOUS'],
-            pageTitle: "Termin"
+            pageTitle: 'Termin'
         },
         canActivate: [UserRouteAccessService]
+    }
+];
+
+export const studentPopupRoute: Routes = [
+    {
+        path: 'student/:id/delete',
+        component: StudentDeletePopupComponent,
+        resolve: {
+            schedule: StudentResolve
+        },
+        data: {
+            authorities: ['ROLE_ADMIN'],
+            pageTitle: 'Schedule'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
     }
 ];

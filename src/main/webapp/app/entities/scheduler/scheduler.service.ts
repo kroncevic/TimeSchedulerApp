@@ -14,6 +14,7 @@ export class SchedulerService {
     public resourceUrl = SERVER_API_URL + "api/schedules";
     public resourceUrl2 = SERVER_API_URL + "api/schedules/get";
     public resourceUrl3 = SERVER_API_URL + "api/schedules/addStudent";
+    public resourceUrl4 = SERVER_API_URL + "api/schedules/removeStudent";
 
     constructor(private http: HttpClient) {}
 
@@ -33,6 +34,14 @@ export class SchedulerService {
         schedule: IScheduler
     ): Observable<EntityResponseType> {
         return this.http.put<IScheduler>(this.resourceUrl3, schedule, {
+            observe: "response"
+        });
+    }
+
+    decrementNumberOfSubmittedStudents(
+        schedule: IScheduler
+    ): Observable<EntityResponseType> {
+        return this.http.put<IScheduler>(this.resourceUrl4, schedule, {
             observe: "response"
         });
     }

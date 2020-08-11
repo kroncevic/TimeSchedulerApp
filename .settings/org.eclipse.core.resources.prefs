@@ -7,6 +7,7 @@ encoding//src/main/webapp/app/entities/scheduler/scheduler-reservation.component
 encoding//src/main/webapp/app/entities/scheduler/scheduler-student-view.component.html=UTF-8
 encoding//src/main/webapp/app/entities/scheduler/scheduler-update.component.html=UTF-8
 encoding//src/main/webapp/app/entities/scheduler/scheduler.component.html=UTF-8
+encoding//src/main/webapp/app/entities/scheduler/student-delete-dialog.component.html=UTF-8
 encoding//src/main/webapp/app/entities/subject/subject-delete-dialog.component.html=UTF-8
 encoding//src/main/webapp/app/home/home.component.html=UTF-8
 encoding//src/main/webapp/app/layouts/navbar/navbar.component.html=UTF-8

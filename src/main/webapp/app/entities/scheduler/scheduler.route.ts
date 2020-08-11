@@ -50,7 +50,6 @@ export const schedulerRoute: Routes = [
             pagingParams: JhiResolvePagingParams
         },
         data: {
-            // authorities: ['ROLE_ANONYMOUS'],
             defaultSort: "id,asc",
             pageTitle: "Termini"
         },
@@ -87,7 +86,6 @@ export const schedulerRoute: Routes = [
             schedule: SchedulerResolve
         },
         data: {
-            // authorities: ['ROLE_ANONYMOUS'],
             pageTitle: "Termin"
         },
         canActivate: [UserRouteAccessService]
@@ -99,7 +97,6 @@ export const schedulerRoute: Routes = [
             schedule: SchedulerResolve
         },
         data: {
-            // authorities: ['ROLE_ANONYMOUS'],
             pageTitle: "Termin"
         },
         canActivate: [UserRouteAccessService]

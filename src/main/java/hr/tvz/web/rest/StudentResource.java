@@ -104,8 +104,8 @@ public class StudentResource {
     @Timed
     public ResponseEntity<List<Student>> getAllStudentsByScheduleId(@PathVariable Long id) {
         log.debug("REST request to get Students by schedule_id: {}", id);
-        Optional<List<Student>> students = studentService.findAllByScheduleId(id);
-        return ResponseUtil.wrapOrNotFound(students);
+        List<Student> students = studentService.findAllByScheduleId(id);
+        return ResponseEntity.ok(students);
     }
 
     @DeleteMapping("/students/{id}")

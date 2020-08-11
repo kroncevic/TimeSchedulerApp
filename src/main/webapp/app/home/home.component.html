@@ -24,7 +24,7 @@
 	<!-- Page Content -->
 	<div class="container">
 		<br>
-		<h1 class="my-4">Instrukcije Budućnost</h1>
+		<h1 class="my-4">Centar za poduke Bolja Budućnost</h1>
 		<br>
 
 		<!-- Marketing Icons Section -->
@@ -33,7 +33,7 @@
 				<div class="card h-100">
 					<h4 class="card-header">{{subject.subjectName}}<a [routerLink]="['/subject', subject.subjectName, 'view' ]"></a></h4>
 					<div class="card-body">
-						<p class="card-text">{{subject.subjectDescription}}</p>
+						<p class="card-text" style="white-space:pre-wrap;">{{subject.subjectDescription}}</p>
 					</div>
 					<div class="card-footer">
 						<a href="#" class="btn btn-primary" [routerLink]="['/subject', subject.id, 'view' ]">Više</a>

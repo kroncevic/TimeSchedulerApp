@@ -87,7 +87,7 @@ public class ScheduleService {
     
     @Transactional(readOnly = true)
     public int decrementNumberOfSubmittedStudents(Long scheduleId) {
-        log.debug("Request to increment number of submitted students");
+        log.debug("Request to decrement number of submitted students");
         return scheduleRepository.decrementNumberOfSubmittedStudents(scheduleId);
     }
     

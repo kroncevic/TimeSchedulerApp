@@ -57,7 +57,7 @@ public class StudentService {
     }
     
     @Transactional(readOnly = true)
-    public Optional<List<Student>> findAllByScheduleId(Long id) {
+    public List<Student> findAllByScheduleId(Long id) {
         log.debug("Request to get all Students for schedule");
         return studentRepository.findAllByScheduleId(id);
     }

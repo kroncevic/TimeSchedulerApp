@@ -7,3 +7,4 @@ export * from "./scheduler-detail.component";
 export * from "./scheduler-student-view.component";
 export * from "./scheduler-reservation.component";
 export * from "./student.route";
+export * from "./student-delete-dialog.component";

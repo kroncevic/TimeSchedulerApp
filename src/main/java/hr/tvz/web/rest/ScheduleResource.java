@@ -123,5 +123,25 @@ public class ScheduleResource {
         		.headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, schedule.getId().toString()))
         		.body(schedule);
     }
+    
+    @PutMapping("/schedules/removeStudent")
+    @Timed
+    public ResponseEntity<Schedule> decrementNumberOfSubmittedStudents (@RequestBody Schedule schedule) throws URISyntaxException {
+    	    	
+    	log.debug("REST request to decrement number of submitted students: {}", schedule);
+    	
+        if (schedule.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }   	
+        
+        scheduleService.decrementNumberOfSubmittedStudents(schedule.getId());
+        
+        Schedule result = scheduleService.findOne(schedule.getId()).orElse(schedule);
+        
+        return ResponseEntity.ok()
+                .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, result.getId().toString()))
+                .body(result);
+        
+    }
 
 }

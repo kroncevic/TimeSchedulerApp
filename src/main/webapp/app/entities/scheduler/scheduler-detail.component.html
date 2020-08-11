@@ -4,24 +4,31 @@
             <h2>{{schedule.subjectName}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
-            <dl class="row-md jh-entity-details">
-                <dt><span>Početak termina</span></dt>
-                <dd>
-                    <span>{{schedule.startTime | customDate}}</span>
-                </dd><br/>
-                <dt><span>Kraj termina</span></dt>
-                <dd>
-                    <span>{{schedule.endTime | customDate}}</span>
-                </dd><br/>
-                <dt><span>Ukupan broj mjesta</span></dt>
-                <dd>
-                    <span>{{schedule.numberOfStudents}}</span>
-                </dd><br/>
-                <dt><span>Broj prijavljenih</span></dt>
-                <dd>
-                    <span>{{schedule.numberOfSubmitted}}</span>
-                </dd>
-            </dl><br/>
+            <div class="table-responsive">
+       			<table class="table table-striped">
+            	<thead>
+            		<tr>
+            			<th><span>Početak termina</span></th>
+            			<th><span>Kraj termina</span></th>
+            			<th><span>Ukupan broj mjesta</span></th>
+                        <th><span>Broj prijavljenih</span></th>
+            		</tr>
+           		</thead>
+				<tbody>
+            	<tr>
+                	<td>{{schedule.startTime | customDate}}</td>
+                	<td>{{schedule.endTime | customDate}}</td>
+                	<td>{{schedule.numberOfStudents}}</td>
+                	<td>{{students.length}}</td>
+            	</tr>
+		</tbody>
+        </table><br/>
+			<div *ngIf="students.length === 0">
+        		<h5 id="message">
+        			<span>Trenutno nema prijavljanih studenata.</span>
+					<br/><br/>
+    			</h5>
+    		</div>
 			<div class="table-responsive" *ngIf="students.length">
         		<table class="table table-striped">
             	<thead>

@@ -4,6 +4,7 @@ export interface IScheduler {
     end?: Date;
     title?: String;
     numberOfStudents?: number;
+    numberOfSubmitted?: number;
 }
 
 export class Scheduler implements IScheduler {
@@ -12,6 +13,7 @@ export class Scheduler implements IScheduler {
         public subjectName?: String,
         public startTime?: Date,
         public endTime?: Date,
-        public numberOfStudents?: number
+        public numberOfStudents?: number,
+        public numberOfSubmitted?: number
     ) {}
 }

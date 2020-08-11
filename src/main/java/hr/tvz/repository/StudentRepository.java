@@ -12,6 +12,6 @@ import hr.tvz.domain.Student;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
             
-    Optional<List<Student>> findAllByScheduleId(Long scheduleId);
+    List<Student> findAllByScheduleId(Long scheduleId);
         
 }

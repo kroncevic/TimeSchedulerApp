@@ -1,18 +1,18 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { HttpResponse, HttpErrorResponse } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { IScheduler } from "app/shared/model/scheduler.model";
-import { IStudent } from "app/shared/model/student.model";
-import { SchedulerService } from "./scheduler.service";
-import { StudentService } from "./student.service";
-import { JhiAlertService } from "ng-jhipster";
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { IScheduler } from 'app/shared/model/scheduler.model';
+import { IStudent } from 'app/shared/model/student.model';
+import { SchedulerService } from './scheduler.service';
+import { StudentService } from './student.service';
+import { JhiAlertService } from 'ng-jhipster';
 
 @Component({
-    selector: "jhi-scheduler-reservation",
+    selector: 'jhi-scheduler-reservation',
     encapsulation: ViewEncapsulation.None,
-    styleUrls: ["scheduler.css"],
-    templateUrl: "./scheduler-reservation.component.html"
+    styleUrls: ['scheduler.css'],
+    templateUrl: './scheduler-reservation.component.html'
 })
 export class SchedulerReservationComponent implements OnInit {
     scheduler: IScheduler;
@@ -27,7 +27,7 @@ export class SchedulerReservationComponent implements OnInit {
         private jhiAlertService: JhiAlertService
     ) {
         this.activatedRoute.queryParams.subscribe(params => {
-            this.schedulerId = params["scheduler"];
+            this.schedulerId = params['scheduler'];
         });
         this.schedulerService.find(this.schedulerId).subscribe(data => {
             this.scheduler = data.body;
